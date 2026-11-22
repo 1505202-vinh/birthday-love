@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday - Dành riêng cho em ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: #9b315d;
+  background: linear-gradient(-45deg,
+    #ffe0ed, #ffc3d9, #f9dafa, #fff0f5);
+  background-size: 400% 400%;
+  animation: bg 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 12px;
+}
+
+@keyframes bg {
+  0%,100% {background-position: 0% 50%}
+  50% {background-position: 100% 50%}
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {opacity:.2; transform:scale(.6)}
+  to {opacity:1; transform:scale(1.3)}
+}
+
+.card {
+  width: 100%;
+  max-width: 550px;
+  padding: 32px 24px;
+  border-radius: 28px;
+  text-align: center;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 15px 60px #c94e7950;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
+  animation: enter 1.2s ease;
+}
+
+@keyframes enter {
+  from {opacity:0; transform:translateY(35px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+h1 {
+  font-size: clamp(26px, 7vw, 36px);
+  margin-bottom: 12px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.small {
+  margin: 15px 0 25px;
+  font-size: 16px;
+}
+
+button {
+  background: linear-gradient(45deg,#ed6495,#ff94b8);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 27px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px #e56b9950;
+  transition: .3s;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+#giftArea {
+  margin: 35px auto 25px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift {
+  position: relative;
+  width: 115px;
+  height: 85px;
+  background: #f15e91;
+  border-radius: 5px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.gift:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 100%;
+  left: 46px;
+  background: #ffe5a8;
+}
+
+.lid {
+  position: absolute;
+  width: 135px;
+  height: 25px;
+  background: #db4179;
+  top: -22px;
+  left: -10px;
+  border-radius: 5px;
+  transform-origin: left bottom;
+  transition: .8s;
+}
+
+.gift.open .lid {
+  transform: rotate(-35deg) translate(-20px,-30px);
+}
+
+.bow {
+  position: absolute;
+  top: -43px;
+  left: 43px;
+  width: 30px;
+  height: 24px;
+  border: 7px solid #ffe5a8;
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-12px)}
+}
+
+#letter {
+  display: none;
+  text-align: left;
+  line-height: 1.9;
+  animation: appear 1.2s ease;
+}
+
+#letter h2 {
+  text-align: center;
+  color: #e34f89;
+  margin-bottom: 20px;
+}
+
+#typing {
+  white-space: pre-line;
+  font-size: 15.5px;
+  line-height: 2;
+}
+
+@keyframes appear {
+  from {opacity:0; transform:translateY(25px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+.signature {
+  text-align: right;
+  margin: 25px 0;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* TRANG CUỐI CÙNG */
+
+#finalPage {
+  display: none;
+  text-align: center;
+  padding: 25px 0;
+  animation: appear 1.5s ease;
+}
+
+#finalPage h1 {
+  color: #e34f89;
+  font-size: 26px;
+}
+
+.huge-heart {
+  font-size: clamp(130px, 35vw, 220px);
+  margin: 35px auto;
+  display: inline-block;
+  animation: bigHeartbeat 1s infinite;
+  filter:
+    drop-shadow(0 0 15px #ff4f91)
+    drop-shadow(0 0 35px #ff80aa);
+}
+
+@keyframes bigHeartbeat {
+  0%,100% {transform:scale(1)}
+  15% {transform:scale(1.2)}
+  30% {transform:scale(1)}
+  45% {transform:scale(1.15)}
+  60% {transform:scale(1)}
+}
+
+#finalPage h2 {
+  color: #e83e7d;
+  font-size: 30px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {text-shadow:0 0 5px #ff9cbd}
+  to {text-shadow:0 0 25px #ff4f91}
+}
+
+.final-text {
+  margin-top: 25px;
+  line-height: 2;
+  font-size: 16px;
+}
+
+.final-small {
+  margin-top: 30px;
+  font-style: italic;
+  color: #d83d7a;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 3;
+  animation: fly linear forwards;
+}
+
+@keyframes fly {
+  to {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  z-index: 1;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="card">
+
+  <!-- MÀN HÌNH 1: SINH NHẬT -->
+
+  <section id="welcome">
+
+    <h1>🎂 Happy Birthday 🎂</h1>
+
+    <p class="small">
+      Hôm nay là một ngày thật đặc biệt...
+      <br>
+      Bởi vì hôm nay là ngày một người đáng yêu
+      được sinh ra trên thế giới này. ❤️
+      <br><br>
+      Anh có một món quà nhỏ muốn dành tặng em.
+      <br>
+      Hãy mở ra nhé! 🌷
+    </p>
+
+    <div id="giftArea">
+      <div class="gift" id="gift">
+        <div class="lid"></div>
+        <div class="bow"></div>
+      </div>
+    </div>
+
+    <button onclick="openGift()">
+      🎁 Mở món quà của em
+    </button>
+
+  </section>
+
+
+  <!-- MÀN HÌNH 2: BỨC THƯ TÂM SỰ -->
+
+  <section id="letter">
+
+    <h2>💌 Gửi cô gái đặc biệt của anh!</h2>
+
+    <div id="typing"></div>
+
+    <div class="signature">
+      Người luôn mong em hạnh phúc ❤️
+    </div>
+
+    <div style="text-align:center">
+      <button onclick="showFinalPage()">
+        ❤️ Điều đặc biệt cuối cùng
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- MÀN HÌNH 3: TRÁI TIM KHỔNG LỒ -->
+
+  <section id="finalPage">
+
+    <h1>❤️ Dành riêng cho em ❤️</h1>
+
+    <div class="huge-heart">
+      ❤️
+    </div>
+
+    <h2>ANH THÍCH EM!</h2>
+
+    <p class="final-text">
+      Cảm ơn em vì đã xuất hiện.
+      <br>
+      Mong rằng chúng ta sẽ có một câu chuyện thật đẹp. 🌷
+    </p>
+
+    <p class="final-small">
+      Happy Birthday My Special Person ❤️
+    </p>
+
+  </section>
+
+</div>
+
+
+<script>
+
+// HIỆU ỨNG ÁNH SÁNG
+
+for(let i=0;i<35;i++){
+
+  let s=document.createElement("span");
+
+  s.className="sparkle";
+
+  s.innerHTML="✦";
+
+  s.style.left=Math.random()*100+"%";
+
+  s.style.top=Math.random()*100+"%";
+
+  s.style.animationDelay=Math.random()*3+"s";
+
+  document.getElementById("stars").appendChild(s);
+
+}
+
+
+// LỜI TÂM SỰ
+
+const message = `Em biết không, đôi khi anh vẫn thấy thật thú vị khi nghĩ về cách mà chúng ta gặp nhau.
+
+Chẳng phải một nơi nào đặc biệt, cũng chẳng phải một cuộc gặp gỡ được sắp đặt trước. Chỉ đơn giản là một lần tình cờ quen nhau khi anh đang câu cá trong game Play Together. 🎣
+
+Anh cũng không ngờ rằng từ một cuộc gặp gỡ tưởng chừng rất bình thường ấy, chúng ta lại có những ngày sau đó. Từ những lần em theo dõi, những cuộc trò chuyện vu vơ, những câu chuyện chẳng đầu chẳng cuối, rồi dần dần trở thành một phần quen thuộc trong những ngày của anh.
+
+Anh chẳng biết chính xác từ lúc nào mình bắt đầu có cảm tình với em. Có lẽ là từ những lần trò chuyện, từ sự quan tâm nhỏ bé, hay đơn giản là cảm giác vui vẻ mỗi khi thấy em xuất hiện. Chỉ biết rằng, từ lúc nào đó, anh đã bắt đầu mong chờ những tin nhắn và muốn biết hôm nay em có vui không.
+
+Anh biết giữa hai chúng ta có một khoảng cách địa lý không hề nhỏ. Chúng ta cũng chẳng thể biết trước được tương lai sẽ ra sao, liệu sau này mọi thứ có còn được như hiện tại hay không.
+
+Nhưng anh vẫn mong rằng, nếu có thể, chúng ta sẽ cùng nhau viết nên một câu chuyện thật đẹp, dù bắt đầu từ một cuộc gặp gỡ rất đỗi tình cờ trong thế giới ảo.
+
+Nhân ngày sinh nhật của em, anh không mong gì hơn ngoài việc em luôn xinh đẹp, rạng rỡ và giữ mãi nụ cười trên môi. Mong em luôn hạnh phúc, bình an, gặp được thật nhiều điều tốt đẹp.
+
+Chúc em sớm hoàn thành chặng đường học tập, thuận lợi ra trường, tìm được một công việc ổn định và thực hiện được những điều mà em hằng mong muốn.
+
+Còn về phía anh, anh chỉ muốn nói rằng: Anh đã bắt đầu thích em, và anh thật sự trân trọng sự xuất hiện của em trong những ngày vừa qua. ❤️
+
+Anh không dám hứa trước điều gì về tương lai, nhưng ở hiện tại, anh muốn dành cho em sự chân thành nhất mà mình có.
+
+Chúc mừng sinh nhật cô gái mà anh đang dần dành cho những tình cảm đặc biệt! 🎂❤️
+
+Hy vọng rằng, cuộc gặp gỡ tình cờ ngày hôm ấy sẽ không chỉ là một kỷ niệm đẹp, mà còn là khởi đầu cho một điều gì đó thật đáng trân trọng. 🌷`;
+
+
+// MỞ HỘP QUÀ
+
+function openGift(){
+
+  const gift=document.getElementById("gift");
+
+  gift.classList.add("open");
+
+  createHearts(35);
+
+  createPetals(20);
+
+  setTimeout(()=>{
+
+    document.getElementById("welcome")
+      .classList.add("hidden");
+
+    document.getElementById("letter")
+      .style.display="block";
+
+    typeText(message);
+
+  },1200);
+
+}
+
+
+// HIỆU ỨNG ĐÁNH MÁY
+
+function typeText(text){
+
+  let i=0;
+
+  const target=document.getElementById("typing");
+
+  target.innerHTML="";
+
+  function typing(){
+
+    if(i<text.length){
+
+      const char=text.charAt(i);
+
+      if(char==="\n"){
+
+        target.appendChild(
+          document.createElement("br")
+        );
+
+      } else {
+
+        target.appendChild(
+          document.createTextNode(char)
+        );
+
+      }
+
+      i++;
+
+      setTimeout(typing,35);
+
+    }
+
+  }
+
+  typing();
+
+}
+
+
+// TRÁI TIM BAY
+
+function createHearts(number){
+
+  for(let i=0;i<number;i++){
+
+    let h=document.createElement("div");
+
+    h.className="heart";
+
+    h.innerHTML=["❤️","💕","💗","💖","💝"][
+      Math.floor(Math.random()*5)
+    ];
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.fontSize=(16+Math.random()*22)+"px";
+
+    h.style.animationDuration=(4+Math.random()*5)+"s";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),10000);
+
+  }
+
+}
+
+
+// CÁNH HOA RƠI
+
+function createPetals(number){
+
+  for(let i=0;i<number;i++){
+
+    let p=document.createElement("div");
+
+    p.className="petal";
+
+    p.innerHTML=["🌸","🌷","🌺","💮"][
+      Math.floor(Math.random()*4)
+    ];
+
+    p.style.left=Math.random()*100+"vw";
+
+    p.style.animationDuration=(5+Math.random()*5)+"s";
+
+    p.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>p.remove(),11000);
+
+  }
+
+}
+
+
+// CHUYỂN SANG TRANG CUỐI CÙNG
+
+function showFinalPage(){
+
+  document.getElementById("welcome").style.display="none";
+
+  document.getElementById("letter").style.display="none";
+
+  document.getElementById("finalPage").style.display="block";
+
+  createHearts(80);
+
+  createPetals(40);
+
+}
+
+</script>
+
+</body>
+</html>
